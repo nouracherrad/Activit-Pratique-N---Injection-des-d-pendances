@@ -3,12 +3,14 @@ package Metier;
 import Dao.DaoImpl;
 import Dao.IDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("metier")
+@Service("metier")
 public class MetierImpl implements IMetier {
     //couplage faible
-    @Autowired
+
     private IDao dao  ;
     @Override
     public double calcul() {
@@ -17,10 +19,8 @@ public class MetierImpl implements IMetier {
         return res;
     }
 
-    public MetierImpl() {
-    }
 
-    public MetierImpl(IDao dao) {
+    public MetierImpl(@Qualifier("dao")IDao dao) {
         this.dao = dao;
     }
 
