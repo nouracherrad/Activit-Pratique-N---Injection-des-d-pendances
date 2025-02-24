@@ -2,9 +2,13 @@ package Metier;
 
 import Dao.DaoImpl;
 import Dao.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("metier")
 public class MetierImpl implements IMetier {
     //couplage faible
+    @Autowired
     private IDao dao  ;
     @Override
     public double calcul() {
